@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GenAI Interview Prep | Sia Partners</title>
+<meta name="description" content="An interactive Generative AI and Agentic AI interview preparation hub tailored to the Sia Partners Generative AI Engineer role.">
+<style>
+:root{--bg:#f6f8fc;--panel:#fff;--ink:#182238;--muted:#65718a;--line:#e4e9f2;--blue:#3559e8;--blue2:#edf1ff;--teal:#0c8a78;--gold:#a76508;--shadow:0 12px 32px rgba(31,49,89,.07);--radius:18px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input{font:inherit}button{cursor:pointer}.app{max-width:1440px;margin:auto;padding:22px;display:grid;grid-template-columns:260px minmax(0,1fr);gap:22px}
+.sidebar{position:sticky;top:18px;height:calc(100vh - 36px);overflow:auto;background:#fff;border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:var(--shadow)}
+.brand{display:flex;gap:10px;align-items:center;font-weight:800;font-size:16px;margin-bottom:24px}.logo{width:38px;height:38px;display:grid;place-items:center;background:linear-gradient(135deg,#385be9,#7a53db);color:#fff;border-radius:12px;font-size:20px}
+.smallcap{text-transform:uppercase;letter-spacing:.12em;font-size:10px;font-weight:800;color:#8b95a9;margin:18px 0 8px}
+.nav{display:flex;flex-direction:column;gap:5px}.nav button{border:0;background:transparent;color:#536079;text-align:left;padding:10px 11px;border-radius:11px;font-weight:650}.nav button:hover,.nav button.active{background:var(--blue2);color:var(--blue)}
+.sidebar-note{margin-top:22px;background:#f6f8ff;border:1px solid #e3e9ff;border-radius:14px;padding:13px;font-size:12px;color:#5b6681}
+main{min-width:0}.topbar{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:18px}.crumb{font-size:13px;color:var(--muted)}.search{width:min(380px,55%);border:1px solid var(--line);background:#fff;border-radius:12px;padding:11px 14px;outline:none}.search:focus{border-color:#8ca0ff;box-shadow:0 0 0 3px #e9edff}
+.hero{position:relative;overflow:hidden;background:linear-gradient(115deg,#172654 0%,#293f93 52%,#6552c7 100%);color:#fff;border-radius:24px;padding:34px;box-shadow:var(--shadow)}
+.hero:after{content:"✦";position:absolute;right:7%;top:-60px;font-size:250px;color:#ffffff12;transform:rotate(12deg)}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#c6d2ff}.hero h1{font-size:clamp(29px,4vw,44px);line-height:1.12;max-width:720px;margin:12px 0}.hero p{max-width:700px;color:#e0e6ff;margin:12px 0 22px}.actions{display:flex;gap:10px;flex-wrap:wrap}.btn{border:1px solid transparent;border-radius:11px;padding:11px 15px;font-weight:750}.btn.primary{background:#fff;color:#263d9b}.btn.ghost{background:#ffffff12;border-color:#ffffff40;color:#fff}.btn.blue{background:var(--blue);color:#fff}.btn.light{background:#f0f3ff;color:var(--blue);border-color:#e0e6ff}.btn:hover{filter:brightness(.97);transform:translateY(-1px)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:17px 0 26px}.stat{background:#fff;border:1px solid var(--line);border-radius:15px;padding:15px}.stat strong{font-size:24px;display:block;line-height:1.2}.stat span{color:var(--muted);font-size:12px}
+.section{margin:26px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:13px}.section h2{font-size:22px;letter-spacing:-.03em;margin:0}.section-head p{margin:3px 0 0;color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:0 5px 18px rgba(31,49,89,.025)}.module{display:flex;flex-direction:column;min-height:205px;transition:.18s}.module:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:#cbd5ff}.module-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px}.module-icon{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:#eef1ff;font-size:21px}.tag{font-size:10px;text-transform:uppercase;letter-spacing:.07em;font-weight:800;border-radius:999px;padding:5px 8px;background:#f0f3f8;color:#64718a}.tag.core{background:#e3f7f2;color:#087c68}.module h3{margin:0 0 6px;font-size:16px}.module p{color:var(--muted);font-size:13px;margin:0 0 16px}.module-foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;color:var(--blue);font-size:12px;font-weight:800}.module-foot span{color:#8b95a9;font-weight:600}
+.two-col{display:grid;grid-template-columns:1.25fr .75fr;gap:14px}.checklist{display:flex;flex-direction:column;gap:11px}.check{display:flex;gap:10px;align-items:flex-start}.check input{margin-top:5px;accent-color:var(--blue);width:16px;height:16px}.check label{font-size:13px}.check small{display:block;color:var(--muted);font-size:12px}.progress{height:8px;background:#edf0f6;border-radius:999px;overflow:hidden;margin:12px 0}.progress>div{height:100%;width:0;background:linear-gradient(90deg,#385be9,#1aa58e);transition:width .2s}
+.quote{background:#f7f8ff;border:1px solid #e5e9ff;border-radius:14px;padding:15px;color:#46516b;font-size:13px}
+.module-view{display:none}.module-view.open{display:block}.back{border:0;background:transparent;color:var(--blue);font-weight:800;padding:0;margin:4px 0 16px}.lesson-head{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;margin-bottom:14px}.lesson-head h2{font-size:29px;margin:5px 0}.lesson-head p{color:var(--muted);margin:0}.lesson-layout{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:14px}.lesson-content{display:flex;flex-direction:column;gap:14px}.lesson-content h3{margin:0 0 8px}.lesson-content p{margin:7px 0;color:#4f5c73}.lesson-content ul{padding-left:21px;margin:7px 0}.lesson-content li{margin:5px 0}.aside-card{height:max-content;position:sticky;top:16px}.qa{border:1px solid var(--line);border-radius:13px;margin:9px 0;overflow:hidden}.qa button{width:100%;display:flex;justify-content:space-between;gap:12px;text-align:left;border:0;background:#fafbfe;padding:13px;font-weight:750;color:var(--ink)}.qa .answer{display:none;padding:13px;border-top:1px solid var(--line);font-size:13px;color:#4f5c73}.qa.open .answer{display:block}.code{background:#151d31;color:#e7edff;padding:14px;border-radius:12px;overflow:auto;font:12px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace}
+.quiz-question{font-weight:800;font-size:16px;margin-bottom:12px}.option{display:block;width:100%;text-align:left;border:1px solid var(--line);background:#fff;padding:11px 13px;border-radius:11px;margin:8px 0;color:var(--ink)}.option:hover{border-color:#9baaff;background:#f8f9ff}.option.correct{border-color:#76c8b5;background:#edfbf7}.option.wrong{border-color:#f0a6a6;background:#fff4f4}.feedback{font-size:13px;margin-top:10px;color:var(--muted)}.hidden{display:none!important}.footer{color:#8a94a8;text-align:center;font-size:12px;padding:25px 0}
+@media(max-width:1050px){.app{grid-template-columns:210px minmax(0,1fr);padding:14px;gap:14px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:repeat(2,1fr)}.lesson-layout{grid-template-columns:minmax(0,1fr)}.aside-card{position:static}}
+@media(max-width:720px){.app{display:block;padding:10px}.sidebar{position:static;height:auto;margin-bottom:14px;padding:14px}.brand{margin-bottom:10px}.nav{display:grid;grid-template-columns:repeat(2,1fr)}.smallcap,.sidebar-note{display:none}.topbar{align-items:flex-start;flex-direction:column}.search{width:100%}.hero{padding:24px}.grid,.two-col{grid-template-columns:1fr}.stats{gap:8px}.stat{padding:12px}.stat strong{font-size:21px}.hero h1{font-size:31px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="logo">✦</div><div>GenAI Interview Lab<div style="font-size:11px;color:#8791a5;font-weight:600">Sia Partners preparation</div></div></div>
+  <div class="smallcap">Workspace</div>
+  <nav class="nav" id="nav">
+    <button class="active" data-target="home">⌂ &nbsp; Overview</button>
+    <button data-target="modules">▦ &nbsp; Learning modules</button>
+    <button data-target="quiz">✎ &nbsp; Knowledge quiz</button>
+    <button data-target="interview">◉ &nbsp; Mock interview</button>
+    <button data-target="checklist">✓ &nbsp; Preparation tracker</button>
+  </nav>
+  <div class="smallcap">Your focus areas</div>
+  <nav class="nav">
+    <button data-module="rag">▤ &nbsp; RAG engineering</button>
+    <button data-module="agents">⑂ &nbsp; Agentic AI</button>
+    <button data-module="aws">☁ &nbsp; AWS architecture</button>
+    <button data-module="evaluation">▥ &nbsp; Evaluation & LLMOps</button>
+  </nav>
+  <div class="sidebar-note"><strong>Interview rule</strong><br>Explain the business problem, your personal contribution, the trade-offs, and how you measured success. Be precise about prototype versus production work.</div>
+</aside>
+<main>
+<div class="topbar"><div class="crumb">Interview preparation / <strong id="crumb">Overview</strong></div><input id="search" class="search" placeholder="Search topics, questions, tools…"></div>
+<section id="home" class="page">
+  <header class="hero">
+    <div class="eyebrow">✦ Personalized learning workspace</div>
+    <h1>Generative AI Engineer<br>Interview Prep</h1>
+    <p>A practical, interactive crash course built around the Sia Partners role: RAG, agentic workflows, AWS, model evaluation, production engineering, and client-facing problem solving.</p>
+    <div class="actions"><button class="btn primary" onclick="showPage('quiz')">✎ Start knowledge quiz →</button><button class="btn ghost" onclick="showPage('modules')">▦ Browse learning modules</button><button class="btn ghost" onclick="showPage('interview')">◉ Practice interview</button></div>
+  </header>
+  <div class="stats">
+    <div class="stat"><strong>6</strong><span>Core learning modules</span></div><div class="stat"><strong>12</strong><span>Knowledge-check questions</span></div><div class="stat"><strong>2</strong><span>Project case studies</span></div><div class="stat"><strong id="progressCount">0%</strong><span>Preparation progress</span></div>
+  </div>
+  <section class="section">
+    <div class="section-head"><div><h2>Start with the essentials</h2><p>Prioritized for the skills and responsibilities in the job description.</p></div><button class="btn light" onclick="showPage('modules')">View all modules</button></div>
+    <div class="grid" id="homeModules"></div>
+  </section>
+  <section class="section two-col">
+    <div class="card"><div class="section-head"><div><h2>Your preparation tracker</h2><p>Check off topics as you become comfortable explaining them.</p></div></div><div class="progress"><div id="progressBar"></div></div><div id="miniChecklist" class="checklist"></div></div>
+    <div class="card"><h2 style="font-size:18px;margin-top:0">Your project stories</h2><p style="font-size:13px;color:var(--muted)">Use these as evidence, and keep implementation claims accurate.</p><div class="quote"><strong>Enterprise Knowledge Intelligence Assistant</strong><br>Bedrock, RAG, citations, abstention, retrieval evaluation, cost-quality trade-offs.</div><div style="height:9px"></div><div class="quote"><strong>AI Insurance Claim Settlement Platform</strong><br>LangGraph workflow, deterministic validation, human-in-the-loop checkpoints, auditability.</div></div>
+  </section>
+</section>
+<section id="modules" class="page hidden">
+  <div class="section-head"><div><h2>Learning modules</h2><p>Open a module for concise notes, interview questions, and examples.</p></div></div><div class="grid" id="allModules"></div>
+</section>
+<section id="lesson" class="page hidden">
+  <button class="back" onclick="showPage('modules')">← Back to modules</button>
+  <div id="lessonBody"></div>
+</section>
+<section id="quiz" class="page hidden">
+  <div class="section-head"><div><h2>Knowledge check</h2><p>12 questions covering common GenAI engineering interview concepts.</p></div><span class="tag core" id="quizCounter">Question 1 of 12</span></div>
+  <div class="card" id="quizCard"></div>
+</section>
+<section id="interview" class="page hidden">
+  <div class="section-head"><div><h2>Mock interview practice</h2><p>Practice speaking in structured, concise answers. Expand the coaching notes after each prompt.</p></div></div>
+  <div class="card"><div class="tag core">Start here</div><h2 style="font-size:24px">Tell me about yourself and one GenAI solution you built.</h2><p>Target 90 seconds to 2 minutes. Cover your background, business problem, architecture, your contribution, evaluation, and why this role interests you.</p>
+  <label for="introAnswer" style="font-weight:750;font-size:13px">Your draft answer</label><textarea id="introAnswer" rows="7" style="width:100%;margin:8px 0;border:1px solid var(--line);border-radius:12px;padding:13px;font:inherit" placeholder="Write or outline your spoken answer…"></textarea><div class="actions"><button class="btn blue" onclick="toggleCoach()">Show answer framework</button><button class="btn light" onclick="copyAnswer()">Copy my answer</button></div><div id="coach" class="quote hidden" style="margin-top:14px"><strong>Suggested structure</strong><ol><li>Who you are and your relevant experience.</li><li>One project and the real user/business problem.</li><li>Architecture and why you selected it.</li><li>Evaluation results, limitations, and trade-offs.</li><li>Why Sia Partners and consulting-style delivery appeal to you.</li></ol><strong>Be ready for:</strong> What did you personally implement? What was tested? What is prototype versus deployed? What would you improve next?</div></div>
+  <div class="section"><h2 style="margin-bottom:12px">Interview question bank</h2><div id="interviewQs"></div></div>
+</section>
+<section id="checklist" class="page hidden">
+  <div class="section-head"><div><h2>Preparation tracker</h2><p>A practical checklist for the week before your interview.</p></div></div><div class="card"><div class="progress"><div id="progressBar2"></div></div><div id="fullChecklist" class="checklist"></div></div>
+</section>
+<footer class="footer">Built for personal interview practice · Use your real experience and validated project results.</footer>
+</main>
+</div>
+<script>
+const modules=[
+{id:'rag',icon:'▤',title:'RAG Engineering',tag:'Highest priority',core:true,desc:'Retrieval, embeddings, citations, abstention, and retrieval-quality diagnosis.',time:'25 min',sections:[
+['The RAG flow','Documents are parsed and chunked; an embedding model converts chunks into vectors; a vector store indexes them; the query is embedded and relevant chunks are retrieved; the LLM answers using the retrieved evidence.'],
+['Chunking and retrieval','Chunk size and overlap affect context completeness, noise, and index size. Compare fixed-size, semantic, and structure-aware chunking. Tune top-K against a representative evaluation set. Metadata filters narrow the search scope; reranking can reorder candidates using query relevance.'],
+['Grounding and abstention','Ask the model to answer only when evidence supports the response, cite the supporting source, and abstain when evidence is insufficient. Validate citations and test unanswerable questions. A prompt alone cannot guarantee zero hallucinations.'],
+['Metrics to know','Hit@K: at least one relevant result is in the top K. Recall@K: fraction of all relevant items retrieved. MRR: average reciprocal rank of the first relevant result. Faithfulness checks support from context; answer correctness checks whether the answer is right.'],
+['Interview question: RAG answers are wrong','First separate retrieval failure from generation failure. Inspect expected documents, retrieved chunks, ranking, filters, context assembly, and the final answer. Change one variable at a time and compare results on a golden dataset.']
+]},
+{id:'agents',icon:'⑂',title:'Agentic AI & LangGraph',tag:'Highest priority',core:true,desc:'Stateful workflows, tools, routing, multi-agent design, and human approval.',time:'25 min',sections:[
+['Chain vs. agent vs. graph','A chain usually follows a defined sequence. An agent selects actions or tools based on the task and observations. LangGraph represents workflows as state, nodes, edges, and conditional transitions; it supports controlled branching and checkpoints.'],
+['State and tool use','Keep state explicit and typed where practical. Validate tool arguments, constrain permissions outside the model, use timeouts and bounded retries, and log actions. Do not treat model-generated tool arguments as trusted.'],
+['Human-in-the-loop','Pause for approval before sensitive or irreversible actions. Present the evidence and proposed action to the reviewer, record the decision, and resume safely. For financial decisions, prefer deterministic rules for calculations and authorized human review for exceptions.'],
+['Failure handling','Distinguish transient from permanent errors; use exponential backoff with jitter, idempotency keys for repeatable external actions, timeouts, circuit breakers where needed, and an exception path. Avoid unbounded agent loops.'],
+['Interview question: Why LangGraph?','Use it when state, conditional paths, multi-step coordination, retries, or human approval matter. A simpler chain or deterministic function is preferable when it meets the requirement with less complexity.']
+]},
+{id:'aws',icon:'☁',title:'AWS GenAI Architecture',tag:'High priority',core:true,desc:'Bedrock, Knowledge Bases, S3, Lambda, API Gateway, identity, and security.',time:'20 min',sections:[
+['Reference architecture','A web client authenticates with an identity provider, calls a protected API, and invokes a backend service. Documents live in S3; ingestion creates chunks and embeddings; retrieval provides evidence to a Bedrock model; the application returns an answer with citations.'],
+['Services to explain','Amazon Bedrock provides managed access to foundation models and related GenAI capabilities. Knowledge Bases help connect data ingestion and retrieval workflows. Lambda runs event-driven backend logic; API Gateway exposes APIs; Cognito supports application identity; DynamoDB stores suitable key-value data; CloudWatch provides logs and metrics.'],
+['Security controls','Apply least-privilege IAM, authentication and per-user authorization, encryption in transit and at rest, secrets management, input validation, PII minimization, logging controls, and network restrictions where appropriate. Metadata filtering is not a substitute for robust authorization.'],
+['Reliability and cost','Set quotas, concurrency limits, timeouts, bounded retries, monitoring, and alarms. Track input/output tokens, model latency, retrieval latency, error rates, and cost per successful request. Load-test expected traffic before launch.'],
+['Interview question: Is it production ready?','Describe what is implemented and tested, what has been deployed, what is simulated, and what remains. Production readiness also needs security review, load testing, operational runbooks, incident handling, rollback, and stakeholder acceptance.']
+]},
+{id:'evaluation',icon:'▥',title:'LLM Evaluation & LLMOps',tag:'High priority',core:true,desc:'Golden datasets, evaluation dimensions, model comparison, CI/CD, and monitoring.',time:'25 min',sections:[
+['Build an evaluation set','Use representative real-world questions with expected answers, relevant source documents, answerability labels, and scoring criteria. Include common questions, edge cases, unanswerable questions, and adversarial inputs. Protect sensitive data.'],
+['Evaluate each stage','Retrieval: Hit@K, Recall@K, MRR or nDCG. Generation: correctness, groundedness, completeness, citation validity, and abstention quality. System: p50/p95 latency, throughput, error rate, and cost. Human review is important for calibration.'],
+['Benchmark models fairly','Run candidate models against the same tasks, context, prompts, and scoring rubric. Compare quality, latency, token use, structured-output reliability, deployment constraints, and privacy requirements. Choose the lowest-complexity option that meets the target.'],
+['MLOps and rollout','Version prompts, models, datasets, retrieval settings, and code. Add offline evaluation gates to CI/CD; use canary or staged rollout, monitor regressions and drift, and maintain rollback options. Schedule retraining only when justified by the system design and observed need.'],
+['Interview question: 100% recall means 100% accuracy?','No. It means the relevant targets were retrieved for the tested questions under the defined metric. The generator can still misunderstand or misstate evidence. Report test-set size, evaluation scope, and limitations.']
+]},
+{id:'engineering',icon:'⌘',title:'Python, APIs & Production',tag:'Core engineering',core:false,desc:'FastAPI, validation, retries, observability, testing, and service design.',time:'20 min',sections:[
+['API design','Define clear request and response schemas, validate inputs, return meaningful status codes, authenticate requests, and avoid exposing internal stack traces or sensitive prompt content. Use async patterns when they fit I/O-bound workloads and supported SDKs.'],
+['Resilience patterns','Use timeouts, bounded retries, backoff, rate limiting, concurrency controls, and idempotency for repeatable operations. Handle provider throttling and partial failures explicitly.'],
+['Testing strategy','Unit-test deterministic logic, integration-test APIs and retrieval, and run end-to-end evaluations on representative prompts. Add regression cases for known failures. Mock external model calls for repeatable unit tests.'],
+['Observability','Capture request IDs, stage-level latency, errors, token usage, model/version identifiers, retrieval metadata, and feedback. Redact or minimize personal and confidential data in logs.'],
+['Interview question: scale to 1,000 users','Clarify simultaneous requests and request rate first. Estimate throughput, check provider quotas, load-test, control concurrency, add autoscaling or queues where appropriate, and measure p95 latency and error rates.']
+]},
+{id:'advanced',icon:'✧',title:'Advanced JD Topics',tag:'Know the fundamentals',core:false,desc:'Multimodal AI, vector stores, fine-tuning, PEFT/LoRA, and responsible AI.',time:'20 min',sections:[
+['Vector store trade-offs','FAISS is a library for efficient similarity search. Chroma offers developer-friendly vector storage. pgvector adds vector search to PostgreSQL. Pinecone is a managed vector database. Qdrant and Weaviate provide vector-search services. Compare filtering, scale, operations, latency, security, and cost.'],
+['RAG or fine-tuning?','RAG is useful for changing or source-grounded knowledge. Fine-tuning adapts model behavior or task performance. Consider prompt design and structured output first; fine-tune only when evaluation shows a persistent gap and suitable data and budget exist.'],
+['PEFT, LoRA, RLHF','PEFT updates a subset of parameters or adds lightweight trainable components. LoRA uses low-rank trainable updates to reduce fine-tuning cost. RLHF uses human preference feedback in a model-alignment process; it is not simply adding more prompt examples.'],
+['Multimodal AI','Multimodal systems handle more than one data modality, such as text, images, and audio. A document workflow may combine OCR, layout understanding, image interpretation, and text retrieval. Evaluate each modality and end-to-end task separately.'],
+['Prompt-injection defense','Treat retrieved documents and user content as untrusted input. Separate instructions from data, constrain tools and permissions, validate outputs, restrict sensitive actions, and test direct and indirect prompt injection. Guardrails are defense in depth, not a complete security boundary.']
+]}
+];
+const checklistItems=[
+['Project storytelling','Explain your role, architecture, personal contribution, and implementation status.'],
+['RAG fundamentals','Explain chunking, embeddings, vector retrieval, metadata filters, and reranking.'],
+['Evaluation metrics','Explain Hit@K, Recall@K, MRR, groundedness, latency, and cost.'],
+['Agent workflows','Explain LangGraph state, routing, tools, retries, and human approval.'],
+['AWS security','Explain IAM, authentication, authorization, data protection, and monitoring.'],
+['Python and API basics','Review JSON, exceptions, request validation, REST APIs, and testing.'],
+['Model selection','Explain how you benchmark models and balance quality, latency, and cost.'],
+['Consulting scenarios','Practice clarifying business requirements and explaining trade-offs clearly.']
+];
+const quiz=[
+{q:'What does RAG primarily add to an LLM application?',o:['It permanently retrains the model on every document','It retrieves relevant external context at query time','It guarantees that all generated answers are correct','It removes the need for evaluation'],a:1,e:'RAG retrieves relevant information at query time and provides it as context. It does not guarantee correctness.'},
+{q:'What does MRR measure in retrieval evaluation?',o:['Average response latency','Average reciprocal rank of the first relevant result','Percentage of correct generated answers','Average number of tokens'],a:1,e:'MRR rewards systems that rank the first relevant result higher.'},
+{q:'When is LangGraph especially useful?',o:['Only for embedding generation','When a workflow needs state and conditional transitions','Only for training foundation models','When no control flow is needed'],a:1,e:'LangGraph is useful for stateful, branching workflows, tool coordination, and checkpoints.'},
+{q:'What is the safest design for claim settlement calculations?',o:['Let the LLM invent the final amount','Use deterministic calculations and validate inputs','Skip policy validation for speed','Allow every tool call without authorization'],a:1,e:'Use deterministic business logic for calculations and controlled approvals for sensitive decisions.'},
+{q:'What does an embedding model produce?',o:['A database password','A numerical vector representation','A guaranteed correct answer','A REST endpoint'],a:1,e:'Embeddings represent semantic features numerically and support similarity search.'},
+{q:'Does 100% Recall@K prove generated answers are 100% accurate?',o:['Yes, always','Only for large models','No, retrieval and generation are separate stages','Yes, if citations are present'],a:2,e:'Relevant evidence can be retrieved but still be misinterpreted by the generator.'},
+{q:'Which is a sensible first step when a RAG answer is wrong?',o:['Immediately fine-tune the model','Inspect expected documents and retrieved chunks','Increase temperature to the maximum','Disable citations'],a:1,e:'Diagnose retrieval, ranking, context assembly, and generation before selecting a fix.'},
+{q:'What is MCP primarily designed to standardize?',o:['GPU hardware','Connections between AI applications and tools/context sources','Model training labels','A vector similarity metric'],a:1,e:'MCP standardizes interfaces for exposing tools and context to compatible AI applications.'},
+{q:'Which control is important for sensitive agent actions?',o:['Unrestricted tool access','Authorization independent of the LLM','Infinite retries','Logging every secret in plaintext'],a:1,e:'Authorization must be enforced by trusted application systems, not by model instructions alone.'},
+{q:'What is LoRA?',o:['A vector database','A parameter-efficient fine-tuning technique','A cloud identity service','A retrieval metric'],a:1,e:'LoRA adds low-rank trainable updates to adapt a model more efficiently.'},
+{q:'Why use a golden evaluation dataset?',o:['To avoid testing edge cases','To compare changes against consistent, representative examples','To guarantee zero hallucinations','To eliminate human review in every case'],a:1,e:'A fixed, representative dataset supports repeatable regression and model comparisons.'},
+{q:'What should you clarify before designing for 1,000 users?',o:['Only the color of the interface','Expected concurrent requests and request rate','Only the number of employees in the company','Whether every request can retry forever'],a:1,e:'Registered users are not the same as simultaneous requests; understand the workload and latency targets.'}
+];
+const interviewQuestions=[
+['How do you decide between semantic search, RAG, agents, and fine-tuning?','Start from the business task and constraints. Use semantic search for finding information; RAG for grounded answers; agents for multi-step tool use or branching; fine-tuning for a demonstrated model-behavior gap that prompting and retrieval cannot solve. Validate with a benchmark.'],
+['Walk me through your Enterprise Knowledge Intelligence Assistant.','Cover the client problem, S3 ingestion, chunking and embeddings, vector retrieval, Bedrock generation, citations and abstention, application security, evaluation dataset, measured results, and known limitations. Be specific about what you personally built.'],
+['How did you select Top-K and measure the cost trade-off?','Compare multiple K values on the same query set. Track retrieval relevance, answer quality, context/token usage, latency, and estimated inference cost. Choose a setting based on the quality-cost trade-off, not cost alone.'],
+['How would you protect an enterprise RAG system from data leakage?','Authenticate users, authorize access to each document or data scope, enforce server-side filters, use least-privilege IAM, encrypt data, minimize sensitive logs, and test cross-tenant and prompt-injection scenarios.'],
+['What would you do if a client asks for a 100% accurate chatbot?','Clarify what accuracy means for the business task, define measurable acceptance criteria, explain limits, establish abstention and human escalation, test representative and adversarial cases, and report confidence and failure modes honestly.'],
+['Tell me about a technical trade-off you made.','Use a real example: context size versus cost, latency versus reranking, autonomy versus deterministic control, or model quality versus serving cost. Explain alternatives, evidence, outcome, and what you would change.'],
+['How do you communicate with a non-technical client?','Start with the business outcome, explain options in plain language, show trade-offs and risks, use a small prototype or measurable example, and confirm acceptance criteria before implementation.']
+];
+let quizIndex=0,score=0,answered=false;
+function el(id){return document.getElementById(id)}
+function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));el(id).classList.remove('hidden');document.querySelectorAll('#nav button[data-target]').forEach(b=>b.classList.toggle('active',b.dataset.target===id));el('crumb').textContent=({home:'Overview',modules:'Learning modules',quiz:'Knowledge quiz',interview:'Mock interview',checklist:'Preparation tracker',lesson:'Learning module'})[id]||id;window.scrollTo({top:0,behavior:'smooth'})}
+function moduleCard(m){return `<article class="card module" data-search="${(m.title+' '+m.desc+' '+m.sections.flat().join(' ')).toLowerCase()}"><div class="module-top"><div class="module-icon">${m.icon}</div><span class="tag ${m.core?'core':''}">${m.tag}</span></div><h3>${m.title}</h3><p>${m.desc}</p><div class="module-foot"><button class="btn light" onclick="openModule('${m.id}')">Open module →</button><span>${m.time}</span></div></article>`}
+el('homeModules').innerHTML=modules.filter(m=>m.core).slice(0,3).map(moduleCard).join('');
+el('allModules').innerHTML=modules.map(moduleCard).join('');
+function openModule(id){const m=modules.find(x=>x.id===id);el('lessonBody').innerHTML=`<div class="lesson-head"><div class="eyebrow" style="color:var(--blue)">${m.tag} · ${m.time}</div><h2>${m.icon} ${m.title}</h2><p>${m.desc}</p></div><div class="lesson-layout"><div class="lesson-content">${m.sections.map((s,i)=>`<article class="card"><h3>${i+1}. ${s[0]}</h3><p>${s[1]}</p>${i===0&&id==='rag'?'<div class="code">Documents → Chunking → Embeddings → Vector index<br>Question → Query embedding → Retrieval → Context + LLM → Answer + citations</div>':''}</article>`).join('')}</div><aside class="card aside-card"><h3 style="margin-top:0">Interview reminder</h3><p style="font-size:13px;color:var(--muted)">Use a concrete example. State what you implemented, why you chose it, how you tested it, and what its limitations are.</p><button class="btn blue" style="width:100%;margin-top:8px" onclick="showPage('interview')">Practice questions</button><button class="btn light" style="width:100%;margin-top:8px" onclick="showPage('quiz')">Take knowledge quiz</button></aside></div>`;showPage('lesson')}
+document.querySelectorAll('[data-module]').forEach(b=>b.addEventListener('click',()=>openModule(b.dataset.module)));
+document.querySelectorAll('[data-target]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.target)));
+el('fullChecklist').innerHTML=checklistItems.map((x,i)=>`<div class="check"><input type="checkbox" id="c${i}" onchange="updateProgress()"><label for="c${i}"><strong>${x[0]}</strong><small>${x[1]}</small></label></div>`).join('');
+el('miniChecklist').innerHTML=checklistItems.slice(0,5).map((x,i)=>`<div class="check"><input type="checkbox" id="m${i}" onchange="syncCheck(${i},this.checked)"><label for="m${i}"><strong>${x[0]}</strong><small>${x[1]}</small></label></div>`).join('');
+function syncCheck(i,v){el('c'+i).checked=v;updateProgress()}
+function updateProgress(){let count=checklistItems.filter((_,i)=>el('c'+i).checked).length;for(let i=0;i<5;i++)el('m'+i).checked=el('c'+i).checked;let pct=Math.round(count/checklistItems.length*100);el('progressBar').style.width=pct+'%';el('progressBar2').style.width=pct+'%';el('progressCount').textContent=pct+'%'}
+function renderQuiz(){answered=false;let q=quiz[quizIndex];el('quizCounter').textContent=`Question ${quizIndex+1} of ${quiz.length}`;el('quizCard').innerHTML=`<div class="tag">Question ${quizIndex+1}</div><div class="quiz-question" style="margin-top:13px">${q.q}</div><div id="options">${q.o.map((o,i)=>`<button class="option" onclick="answerQuiz(${i})">${String.fromCharCode(65+i)}. ${o}</button>`).join('')}</div><div id="quizFeedback" class="feedback"></div><div class="actions" style="margin-top:18px"><button id="nextQuiz" class="btn blue hidden" onclick="nextQuiz()">${quizIndex===quiz.length-1?'See results':'Next question →'}</button><button id="restartQuiz" class="btn light hidden" onclick="restartQuiz()">Try again ↻</button></div>`}
+function answerQuiz(i){if(answered)return;answered=true;let q=quiz[quizIndex];document.querySelectorAll('.option').forEach((b,j)=>{if(j===q.a)b.classList.add('correct');else if(j===i)b.classList.add('wrong')});if(i===q.a)score++;el('quizFeedback').innerHTML=`<strong>${i===q.a?'Correct!':'Not quite.'}</strong> ${q.e}`;el('nextQuiz').classList.remove('hidden')}
+function nextQuiz(){if(quizIndex<quiz.length-1){quizIndex++;renderQuiz()}else{el('quizCounter').textContent='Quiz complete';el('quizCard').innerHTML=`<div class="module-icon">✓</div><h2>Quiz complete</h2><p>You scored <strong>${score} / ${quiz.length}</strong> (${Math.round(score/quiz.length*100)}%). Review any weak areas in the learning modules and try again.</p><div class="progress"><div style="width:${score/quiz.length*100}%"></div></div><button class="btn blue" onclick="restartQuiz()">Try again ↻</button> <button class="btn light" onclick="showPage('modules')">Review modules</button>`}}
+function restartQuiz(){quizIndex=0;score=0;renderQuiz()}
+el('interviewQs').innerHTML=interviewQuestions.map((q,i)=>`<div class="qa"><button onclick="this.parentElement.classList.toggle('open')"><span>${i+1}. ${q[0]}</span><span>＋</span></button><div class="answer">${q[1]}</div></div>`).join('');
+function toggleCoach(){el('coach').classList.toggle('hidden')}
+function copyAnswer(){const t=el('introAnswer').value;if(!t){alert('Write your answer first.');return}if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(()=>alert('Answer copied.')).catch(()=>alert('Copy is not available in this browser. You can select the text manually.'));else alert('Clipboard access is not available. You can select the text manually.')}
+el('search').addEventListener('input',e=>{const q=e.target.value.toLowerCase().trim();if(!q)return;showPage('modules');document.querySelectorAll('#allModules .module').forEach(c=>c.classList.toggle('hidden',!c.dataset.search.includes(q)));});
+renderQuiz();
+</script>
+</body>
+</html>
